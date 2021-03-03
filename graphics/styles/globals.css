@@ -5,4 +5,17 @@
     --background-2-light: #F4A590;
     --background-2-mid: #8D2F2A;
     --background-2-dark: #7E2A26;
+
+    --scoreboard-background: rgba(228, 228, 228, 0.8);
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
