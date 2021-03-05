@@ -17,11 +17,11 @@ function setTopBarAnim() {
 			continue;
 		}
 
-		topInfoTl.add(gsap.fromTo(elem, {opacity: 0, y: -25}, {
+		topInfoTl.add(gsap.fromTo(elem, {opacity: 0, y: -50}, {
 			opacity: 1,
 			y: 0,
 			duration: 0.3,
-			ease: Power2.easeOut,
+			ease: Back.easeOut,
 			force3D: false
 		}));
 
@@ -41,7 +41,7 @@ function setTopBarAnim() {
 			topInfoTl.add(gsap.to({}, {duration: switchDelay}));
 		}
 
-		topInfoTl.add(gsap.to(elem, {opacity: 0, y: 25, duration: 0.3, ease: Power2.easeIn, force3D: false}));
+		topInfoTl.add(gsap.to(elem, {opacity: 0, y: 50, duration: 0.3, ease: Back.easeIn, force3D: false}));
 	}
 }
 
