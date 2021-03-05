@@ -73,11 +73,25 @@ function hideInfoBar(position = '-=0.0') {
 }
 
 function showTeams() {
-
+    sceneTl.add(gsap.fromTo('#team-a-wrapper', {y: -75, opacity: 0}, {
+        y: 0,
+        duration: 0.5,
+        opacity: 1,
+        ease: Back.easeOut,
+        force3D: false
+    }), '-=0.5');
+    sceneTl.add(gsap.fromTo('#team-b-wrapper', {y: 75, opacity: 0}, {
+        y: 0,
+        duration: 0.5,
+        opacity: 1,
+        ease: Back.easeOut,
+        force3D: false
+    }), '-=0.5');
 }
 
 function hideTeams() {
-
+    sceneTl.add(gsap.to('#team-a-wrapper', {y: 75, duration: 0.5, opacity: 0, ease: Back.easeIn}));
+    sceneTl.add(gsap.to('#team-b-wrapper', {y: -75, duration: 0.5, opacity: 0, ease: Back.easeIn}), '-=0.5');
 }
 
 function showStages() {
@@ -90,7 +104,8 @@ function hideStages() {
     // scoreboard anim
 }
 
-function hideStageElems(timeline, callback = () => {}) {
+function hideStageElems(timeline, callback = () => {
+}) {
 
 }
 
