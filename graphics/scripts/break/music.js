@@ -1,6 +1,7 @@
 const songTextTl = gsap.timeline();
-
 const songTextElem = document.getElementById('song-text');
+const topBarMusicTl = gsap.timeline();
+const topBarMusicElem = document.getElementById('info-row-music-text');
 
 function checkStringEmptyOrUndef(string) {
     string = String(string);
@@ -26,6 +27,16 @@ nowPlaying.on('change', newValue => {
         songTextElem,
         songTextElem.parentNode.querySelector('i'),
         songTextTl);
+
+    topBarMusicTl.add(gsap.to([topBarMusicElem, '#info-row-music-icon'], {
+        opacity: 0, duration: 0.3, onComplete: function () {
+            topBarMusicElem.setAttribute('text', `${newValue.artist} - ${newValue.song}`);
+        }
+    }));
+
+    topBarMusicTl.add(gsap.to([topBarMusicElem, '#info-row-music-icon'], {
+        opacity: 1, duration: 0.3
+    }));
 });
 
 musicShown.on('change', newValue => {

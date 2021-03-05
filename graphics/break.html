@@ -23,12 +23,13 @@
     <link rel="stylesheet" href="styles/break/break.css">
     <link rel="stylesheet" href="styles/break/background.css">
     <link rel="stylesheet" href="styles/break/main.css">
+    <link rel="stylesheet" href="styles/break/infoBar.css">
 </head>
 <body>
 <div class="logo-wrapper flex-align-center">
     <div class="logo">
         <img src="imgs/rrlogo.png">
-        <div>Reef Rushdown</div>
+        <div class="rr-logo-font">Reef Rushdown</div>
     </div>
 </div>
 
@@ -53,6 +54,30 @@
     </div>
 </div>
 
+<div class="info-bar-wrapper flex-align-center">
+    <div class="info-bar flex-align-center">
+        <div class="info-row info-row-welcome flex-align-center">
+            Welcome to<span class="small-logo"><img src="imgs/rrlogo.png"></span><span
+                class="rr-logo-font">Reef Rushdown!</span>
+        </div>
+        <div class="info-row info-row-commentators flex-align-center">
+            <div class="commentators flex-align-center">
+                <i class="fas fa-microphone-alt"></i>&nbsp;<fitted-text id="info-row-casters-text" useInnerHTML
+                                                                        text="Casters" max-width="1300"></fitted-text>
+            </div>
+            <div class="commentators flex-align-center">
+                <i class="fab fa-twitter"></i>&nbsp;<fitted-text id="info-row-casters-twitter-text" useInnerHTML
+                                                                 text="Casters" max-width="1300"></fitted-text>
+            </div>
+        </div>
+        <div class="info-row info-row-music flex-align-center">
+            <i class="fas fa-music" id="info-row-music-icon"></i>&nbsp;<fitted-text id="info-row-music-text"
+                                                                                    text="Music"
+                                                                                    max-width="1300"></fitted-text>
+        </div>
+    </div>
+</div>
+
 <div class="background-wrapper wave-wrapper">
     <svg class="wave-svg" viewBox="0 -600 1920 2160">
         <path id="wave-path" d=""></path>
@@ -73,6 +98,9 @@
 <script src="scripts/break/music.js"></script>
 <script src="scripts/break/mainFlavorText.js"></script>
 <script src="scripts/break/nextStageTimer.js"></script>
+<script src="scripts/break/sceneSwitcher.js"></script>
+<script src="scripts/break/infoBar.js"></script>
+<script src="scripts/break/casters.js"></script>
 
 </body>
 </html>
