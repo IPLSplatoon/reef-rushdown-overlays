@@ -1,0 +1,135 @@
+.scene-wrapper.stages-scene {
+	align-items: unset;
+	z-index: 6;
+}
+
+.scene-wrapper.stages-scene > .stages-grid {
+	width: 1700px;
+	height: 600px;
+
+	position: absolute;
+	bottom: 210px;
+
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 20px;
+	z-index: 6;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage {
+	border-radius: 10px;
+	position: relative;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content {
+	height: 100%;
+	width: 100%;
+
+	overflow: hidden;
+
+	position: absolute;
+	z-index: 2;
+	border-radius: 10px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-image {
+	height: 485px;
+	width: 100%;
+
+	position: absolute;
+
+	background-position: center center;
+	background-size: cover;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text {
+	height: 600px;
+	width: 100%;
+	position: absolute;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-winner-wrapper > .stage-winner {
+	color: white;
+	text-align: right;
+	position: relative;
+	font-weight: 600;
+	margin: 10px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-winner-wrapper {
+	height: 500px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	align-items: unset;
+	justify-content: flex-end;
+	background: linear-gradient(180deg, #222 0%, transparent 50%);
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info {
+	position: absolute;
+	bottom: 0;
+	color: var(--background-2-dark);
+	padding: 10px;
+	width: calc(100% - 20px);
+	background-color: var(--background-1-light);
+	height: 165px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info > .stage-mode {
+	font-size: 32px;
+	margin-bottom: 5px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
+	font-size: 35px;
+	font-weight: 700;
+	justify-self: center;
+}
+
+.scene-wrapper.stages-scene > .stages-scoreboard {
+	height: 65px;
+	width: 1000px;
+	background-color: var(--background-1-light);
+	position: absolute;
+	top: 125px;
+	border-radius: 12px;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 4fr 1.5fr 4fr;
+	align-items: center;
+}
+
+.scene-wrapper.stages-scene > .stages-scoreboard > .scores {
+	background-color: var(--background-2-dark);
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr 0.5fr 1fr;
+	align-items: center;
+	justify-items: center;
+	font-size: 50px;
+	font-weight: 700;
+}
+
+.scene-wrapper.stages-scene > .stages-scoreboard > .scores > fitted-text {
+	margin-top: 4px;
+	font-family: Montserrat, sans-serif;
+	color: var(--background-2-light);
+}
+
+.scene-wrapper.stages-scene > .stages-scoreboard > fitted-text {
+	margin: 0 10px;
+	font-size: 35px;
+	font-weight: 600;
+	color: var(--background-2-dark);
+}
+
+#team-a-name-scoreboard {
+	justify-self: end;
+}
