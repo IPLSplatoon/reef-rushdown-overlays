@@ -61,8 +61,8 @@ function hideMainScene() {
 
 function toggleWaveHeight(expand) {
     const waveTop = expand ? -460 : 0;
-    const position = expand ? '-=0' : '-=0.5';
-    sceneTl.to('div.wave-wrapper', {top: waveTop, duration: 1, ease: Power3.easeInOut}, position);
+    const position = expand ? '-=0' : '-=0.9';
+    sceneTl.to('div.wave-wrapper', {top: waveTop, duration: 1.5, ease: Power3.easeInOut}, position);
 }
 
 function showInfoBar() {
