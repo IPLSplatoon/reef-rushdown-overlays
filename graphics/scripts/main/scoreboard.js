@@ -3,22 +3,28 @@ teamScores.on('change', newValue => {
     document.getElementById('team-b-score').setAttribute('text', newValue.teamB);
 });
 
+const sbEditTls = {
+    teamA: gsap.timeline(),
+    teamB: gsap.timeline(),
+    flavorText: gsap.timeline()
+};
+
 scoreboardData.on('change', (newValue, oldValue) => {
     if (!oldValue) {
-        textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'));
-        textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'));
-        textOpacitySwap(newValue.flavorText, document.getElementById('scoreboard-flavor-text'));
+        textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'), sbEditTls["teamA"]);
+        textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'), sbEditTls["teamB"]);
+        textOpacitySwap(newValue.flavorText, document.getElementById('scoreboard-flavor-text'), sbEditTls["flavorText"]);
     } else {
         if (newValue.teamAInfo.name !== oldValue.teamAInfo.name) {
-            textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'));
+            textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'), sbEditTls["teamA"]);
         }
 
         if (newValue.teamBInfo.name !== oldValue.teamBInfo.name) {
-            textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'));
+            textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'), sbEditTls["teamB"]);
         }
 
         if (newValue.flavorText !== oldValue.flavorText) {
-            textOpacitySwap(newValue.flavorText, document.getElementById('scoreboard-flavor-text'));
+            textOpacitySwap(newValue.flavorText, document.getElementById('scoreboard-flavor-text'), sbEditTls["flavorText"]);
         }
     }
 
@@ -32,16 +38,6 @@ scoreboardData.on('change', (newValue, oldValue) => {
         duration: 0.35
     });
 });
-
-function textOpacitySwap(newText, elem) {
-    gsap.to(elem, {
-        opacity: 0, duration: 0.35, onComplete: () => {
-            elem.setAttribute('text', newText);
-        }
-    });
-
-    gsap.to(elem, {opacity: 1, duration: 0.35, delay: 0.35});
-}
 
 const sbShowTl = new gsap.timeline();
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlRequiredAltAttribute -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,20 +22,57 @@
     <link rel="stylesheet" href="styles/globals.css">
     <link rel="stylesheet" href="styles/break/break.css">
     <link rel="stylesheet" href="styles/break/background.css">
+    <link rel="stylesheet" href="styles/break/main.css">
 </head>
 <body>
+<div class="logo-wrapper flex-align-center">
+    <div class="logo">
+        <img src="imgs/rrlogo.png">
+        <div>Reef Rushdown</div>
+    </div>
+</div>
+
+<div class="background-wrapper coral-wrapper"></div>
+
+<div class="scene-wrapper flex-align-center">
+    <div class="scene main-scene flex-align-center">
+        <fitted-text class="main-flavor-text" id="main-flavor-text" text="bingus my beloved"
+                     max-width="1800"></fitted-text>
+        <div class="line"></div>
+        <div class="music-timer-wrapper flex-align-center">
+            <div class="music">
+                <i class="fas fa-music"></i>
+                <fitted-text id="song-text" text="Somebody - SMTHNG" max-width="1700"></fitted-text>
+            </div>
+            <div class="line"></div>
+            <div class="timer">
+                <i class="far fa-clock"></i>
+                <div id="timer-text">Next round starts in <span id="mins-remaining">??? minutes...</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="background-wrapper wave-wrapper">
     <svg class="wave-svg" viewBox="0 -600 1920 2160">
         <path id="wave-path" d=""></path>
     </svg>
 </div>
 
-<div class="background-wrapper coral-wrapper"></div>
-
+<script src="../node_modules/fitted-text/dist/fitted-text.js"></script>
 <script src="../node_modules/gsap/dist/gsap.js"></script>
 <script src="../node_modules/wavify/wavify.js"></script>
+<script src="../node_modules/luxon/build/global/luxon.js"></script>
 
+<script src="scripts/globals.js"></script>
+<script src="scripts/replicants.js"></script>
+
+<script src="scripts/break/break.js"></script>
+<script src="scripts/break/main.js"></script>
 <script src="scripts/break/backgroundAnimation.js"></script>
+<script src="scripts/break/music.js"></script>
+<script src="scripts/break/mainFlavorText.js"></script>
+<script src="scripts/break/nextStageTimer.js"></script>
 
 </body>
 </html>

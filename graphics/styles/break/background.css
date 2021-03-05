@@ -17,7 +17,7 @@ div.background-wrapper {
 
 div.wave-wrapper {
     height: 2160px;
-    z-index: 2;
+    z-index: 5;
 }
 
 div.coral-wrapper {

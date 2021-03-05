@@ -1,0 +1,55 @@
+.scene.main-scene {
+    width: 1920px;
+    height: 600px;
+    align-self: flex-end;
+    flex-direction: column;
+}
+
+.scene.main-scene > fitted-text.main-flavor-text {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--background-1-light);
+}
+
+.scene.main-scene > .line {
+    width: 1000px;
+    height: 5px;
+    background-color: var(--background-2-mid);
+    margin: 15px 0;
+}
+
+.music-timer-wrapper {
+    width: 1800px;
+    color: var(--background-1-light);
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.music-timer-wrapper > .music,
+.music-timer-wrapper > .timer {
+    display: flex;
+    align-items: center;
+    height: 70px;
+}
+
+.music-timer-wrapper > .music > i,
+.music-timer-wrapper > .timer > i {
+    margin-right: 15px;
+    font-size: 50px;
+}
+
+.music-timer-wrapper > .music > fitted-text,
+.music-timer-wrapper > .timer > div {
+    font-size: 48px;
+}
+
+.music-timer-wrapper > .line {
+    width: 500px;
+    height: 5px;
+    background-color: var(--background-2-mid);
+    margin: 15px 0;
+}
+
+#mins-remaining {
+    font-weight: 700;
+}
