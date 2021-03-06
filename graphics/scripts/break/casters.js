@@ -18,7 +18,8 @@ casters.on('change', (newValue, oldValue) => {
 			if (element.pronouns !== oldElement.pronouns) {
 				updateNames = true;
 				updateTwitters = true;
-			} else if (element.twitter !== oldElement.twitter) {
+			}
+			if (element.twitter !== oldElement.twitter) {
 				updateTwitters = true;
 			} else if (element.name !== oldElement.name) {
 				updateNames = true;
