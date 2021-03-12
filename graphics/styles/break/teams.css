@@ -47,6 +47,23 @@
 	flex-direction: column;
 }
 
+.scene-wrapper.teams-scene > .scene-content > .team > .team-a-decor-icon {
+	left: -100px;
+	transform: rotate(-15deg);
+}
+
+.scene-wrapper.teams-scene > .scene-content > .team > .team-b-decor-icon {
+	right: -100px;
+	transform: rotate(15deg);
+}
+
+.scene-wrapper.teams-scene > .scene-content > .team > .team-decor-icon {
+	position: absolute;
+	z-index: 10;
+	width: 150px;
+	top: -75px;
+}
+
 .scene-wrapper.teams-scene > .scene-content > .team > .content-wrapper > .content.first-team-content {
 	align-items: flex-end;
 }

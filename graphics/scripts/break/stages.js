@@ -75,10 +75,10 @@ NodeCG.waitForReplicants(rounds, activeRound, gameWinners, scoreboardData, activ
 
 			if (elem === 1) {
 				if (oldValue && oldValue.teamAInfo.name === newValue.teamAInfo.name) continue;
-				setWinnerName(i, newValue.teamAInfo.name);
+				setWinnerName(i, newValue.teamAInfo.name, elem);
 			} else if (elem === 2) {
 				if (oldValue && oldValue.teamBInfo.name === newValue.teamBInfo.name) continue;
-				setWinnerName(i, newValue.teamBInfo.name);
+				setWinnerName(i, newValue.teamBInfo.name, elem);
 			}
 		}
 
@@ -148,6 +148,8 @@ function updateStages(roundObject) {
 
 		const winnerValue = gameWinners.value[i];
 		let winnerName = '';
+		let stageDecorIconImgLink = getWinnerIconLink(winnerValue);
+
 		if (winnerValue === 1) {
 			winnerName = scoreboardData.value.teamAInfo.name;
 		} else if (winnerValue === 2) {
@@ -157,6 +159,7 @@ function updateStages(roundObject) {
 		// noinspection CssUnknownTarget,CssInvalidPropertyValue
 		roundsHTML += `
 			<div class="stage flex-align-center">
+				<img class="stage-decor-icon" src="${stageDecorIconImgLink}" style="opacity: ${winnerValue === 0 ? 0 : 1}">
 				<div class="accent"></div>
 				<div class="stage-content">
 					<div class="stage-image"
@@ -223,12 +226,15 @@ function setGameWinner(index, winner, oldWinner) {
 	const image = elem.querySelector('.stage-content > .stage-image');
 	const winnerElem = elem.querySelector('.stage-content > .stage-text > .stage-winner-wrapper');
 	const winnerTextElem = elem.querySelector('.stage-content > .stage-text > .stage-winner-wrapper > .stage-winner');
+	const iconElem = elem.querySelector('.stage-decor-icon');
 
 	const tl = winnerTls[index];
 
 	const winnerOpacity = winner === 0 ? 0 : 1;
 	const winnerSaturation = winner === 0 ? 1 : 0.15;
+	const winnerIconLink = getWinnerIconLink(winner);
 	let winnerName;
+
 	if (winner === 1) {
 		winnerName = scoreboardData.value.teamAInfo.name;
 	} else if (winner === 2) {
@@ -238,30 +244,43 @@ function setGameWinner(index, winner, oldWinner) {
 	if (winner !== 0) {
 		if (oldWinner === 0) {
 			winnerTextElem.innerText = winnerName;
+			iconElem.src = winnerIconLink;
 		} else {
-			setWinnerName(index, winnerName);
+			setWinnerName(index, winnerName, winner);
 		}
 	}
 
 	tl.add(gsap.to(image, {duration: 0.35, filter: `saturate(${winnerSaturation})`}))
-		.add(gsap.to(winnerElem, {duration: 0.35, opacity: winnerOpacity}), '-=0.35');
+		.add(gsap.to([winnerElem, iconElem], {duration: 0.35, opacity: winnerOpacity}), '-=0.35');
 }
 
-function setWinnerName(index, name) {
+function setWinnerName(index, name, winner) {
 	const stageElems = document.querySelectorAll('.scene-wrapper.stages-scene > .stages-grid > .stage');
 	if (!stageElems[index]) return;
 
 	const elem = stageElems[index];
 	const winnerTextElem = elem.querySelector('.stage-content > .stage-text > .stage-winner-wrapper > .stage-winner');
+	const iconElem = elem.querySelector('.stage-decor-icon');
+	const winnerIconImgLink = getWinnerIconLink(winner);
 
 	const tl = winnerTls[index];
 
-	tl.add(gsap.to(winnerTextElem, {
+	tl.add(gsap.to([winnerTextElem, iconElem], {
 		opacity: 0, duration: 0.35, onComplete: function () {
 			winnerTextElem.innerText = name;
+			iconElem.src = winnerIconImgLink;
 		}
 	}))
-		.add(gsap.to(winnerTextElem, {opacity: 1, duration: 0.35}));
+		.add(gsap.to([winnerTextElem, iconElem], {opacity: 1, duration: 0.35}));
+}
 
-
+function getWinnerIconLink(winner) {
+	switch (winner) {
+		case 1:
+			return 'imgs/coral.svg';
+		case 2:
+			return 'imgs/shell.svg';
+		default:
+			return 'imgs/question-mark.svg';
+	}
 }
