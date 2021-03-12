@@ -37,18 +37,40 @@
 
 <div class="scene-wrapper flex-align-center">
     <div class="scene main-scene flex-align-center">
-        <fitted-text class="main-flavor-text" id="main-flavor-text" text="Welcome to Reef Rushdown!"
-                     max-width="1800"></fitted-text>
-        <div class="line"></div>
-        <div class="music-timer-wrapper flex-align-center">
-            <div class="music">
-                <i class="fas fa-music"></i>
-                <fitted-text id="song-text" text="Music" max-width="1700"></fitted-text>
-            </div>
+        <div class="main-container flex-align-center">
+            <fitted-text class="main-flavor-text" id="main-flavor-text" text="Welcome to Reef Rushdown!"
+                         max-width="1800"></fitted-text>
             <div class="line"></div>
-            <div class="timer">
-                <i class="far fa-clock"></i>
-                <div id="timer-text">Next round starts in <span id="mins-remaining">??? minutes...</span></div>
+            <div class="music-timer-wrapper flex-align-center">
+                <div class="music">
+                    <i class="fas fa-music"></i>
+                    <fitted-text id="song-text" text="Music" max-width="1700"></fitted-text>
+                </div>
+                <div class="line"></div>
+                <div class="timer">
+                    <i class="far fa-clock"></i>
+                    <div id="timer-text">Next round starts in <span id="mins-remaining">??? minutes...</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-container flex-align-center">
+            <div class="main-container-title">Support us!</div>
+            <div class="line"></div>
+            <div class="support-row">
+                <i class="fab fa-twitter"></i>
+                <span>@IPLSplatoon</span>
+            </div>
+            <div class="support-row">
+                <i class="fab fa-discord"></i>
+                <span>IPLabs.ink/discord</span>
+            </div>
+            <div class="support-row">
+                <i class="fab fa-patreon"></i>
+                <span>patreon.com/IPLSplatoon</span>
+            </div>
+            <div class="support-row">
+                <i class="fas fa-globe"></i>
+                <span>IPLabs.ink</span>
             </div>
         </div>
     </div>
@@ -163,6 +185,7 @@
 <script src="scripts/break/casters.js"></script>
 <script src="scripts/break/teams.js"></script>
 <script src="scripts/break/stages.js"></script>
+<script src="scripts/break/mainInfoSwitcher.js"></script>
 
 </body>
 </html>

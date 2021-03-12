@@ -5,13 +5,20 @@
     flex-direction: column;
 }
 
-.scene.main-scene > fitted-text.main-flavor-text {
-    font-size: 64px;
-    font-weight: 700;
+.scene.main-scene > .main-container {
+    width: 1920px;
+    position: absolute;
+    opacity: 0;
+    flex-direction: column;
     color: var(--background-1-light);
 }
 
-.scene.main-scene > .line {
+fitted-text.main-flavor-text {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.scene.main-scene > .main-container > .line {
     width: 1000px;
     height: 5px;
     background-color: var(--background-2-mid);
@@ -20,7 +27,6 @@
 
 .music-timer-wrapper {
     width: 1800px;
-    color: var(--background-1-light);
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -52,4 +58,25 @@
 
 #mins-remaining {
     font-weight: 700;
+}
+
+.main-container-title {
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.scene.main-scene > .main-container > .support-row > i {
+    font-size: 60px;
+}
+
+.scene.main-scene > .main-container > .support-row > span {
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+.scene.main-scene > .main-container > .support-row {
+    font-size: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
