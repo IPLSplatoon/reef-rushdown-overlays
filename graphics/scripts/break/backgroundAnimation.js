@@ -35,7 +35,7 @@ coralTileScrollTl.to('div.coral-wrapper', {
 
 
 
-const app = new PIXI.Application({
+const bottomCoralApp = new PIXI.Application({
     view: document.getElementById('bottom-coral-canvas'),
     width: 1920,
     height: 285,
@@ -53,10 +53,10 @@ const sprite1 = createCoralSprite('imgs/coral-pattern-a.png', 10);
 
 const sprite2 = createCoralSprite('imgs/coral-pattern-b.png', 1590);
 
-app.stage.addChild(sprite1);
-app.stage.addChild(sprite2);
+bottomCoralApp.stage.addChild(sprite1);
+bottomCoralApp.stage.addChild(sprite2);
 
-app.ticker.add(function(delta) {
+bottomCoralApp.ticker.add(function(delta) {
     filter.uniforms.time += 0.05 * delta;
 });
 
