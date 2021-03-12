@@ -13,7 +13,7 @@
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 45px;
+	gap: 35px;
 	z-index: 6;
 }
 

@@ -123,21 +123,21 @@ function updateStages(roundObject) {
 		case 3:
 			stagesWidth = 1200;
 			stagesGap = 50;
-			stageModeMaxWidth = 345;
+			stageModeMaxWidth = 352;
 			stageNameFontSize = 40;
 			stageModeFontSize = 37;
 			break;
 		case 5:
 			stagesWidth = 1500;
 			stagesGap = 35;
-			stageModeMaxWidth = 245;
+			stageModeMaxWidth = 250;
 			stageNameFontSize = 38;
 			stageModeFontSize = 35;
 			break;
 		case 7:
 			stagesWidth = 1700;
 			stagesGap = 20;
-			stageModeMaxWidth = 200;
+			stageModeMaxWidth = 190;
 			stageNameFontSize = 34;
 			stageModeFontSize = 31;
 	}
