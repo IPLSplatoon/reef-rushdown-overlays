@@ -25,6 +25,7 @@
         "fitted-text": "^1.0.1",
         "gsap": "3.5.0",
         "luxon": "^1.26.0",
+        "pixi.js": "^6.0.0",
         "wavify": "^1.0.0"
     },
     "devDependencies": {

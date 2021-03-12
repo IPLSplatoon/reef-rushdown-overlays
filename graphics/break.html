@@ -35,8 +35,6 @@
     </div>
 </div>
 
-<div class="background-wrapper coral-wrapper"></div>
-
 <div class="scene-wrapper flex-align-center">
     <div class="scene main-scene flex-align-center">
         <fitted-text class="main-flavor-text" id="main-flavor-text" text="Welcome to Reef Rushdown!"
@@ -133,16 +131,23 @@
     </div>
 </div>
 
+<div class="background-wrapper coral-wrapper"></div>
+
 <div class="background-wrapper wave-wrapper">
     <svg class="wave-svg" viewBox="0 -600 1920 2160">
         <path id="wave-path" d=""></path>
     </svg>
 </div>
 
+<div class="background-wrapper bottom-coral-wrapper">
+    <canvas id="bottom-coral-canvas"></canvas>
+</div>
+
 <script src="../node_modules/fitted-text/dist/fitted-text.js"></script>
 <script src="../node_modules/gsap/dist/gsap.js"></script>
 <script src="../node_modules/wavify/wavify.js"></script>
 <script src="../node_modules/luxon/build/global/luxon.js"></script>
+<script src="../node_modules/pixi.js/dist/browser/pixi.min.js"></script>
 
 <script src="scripts/globals.js"></script>
 <script src="scripts/replicants.js"></script>

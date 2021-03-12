@@ -61,8 +61,18 @@ function hideMainScene() {
 
 function toggleWaveHeight(expand) {
     const waveTop = expand ? -460 : 0;
+    const coralY = expand ? 0 : 300;
     const position = expand ? '-=0' : '-=0.9';
-    sceneTl.to('div.wave-wrapper', {top: waveTop, duration: 1.5, ease: Power3.easeInOut}, position);
+    const coralEase = expand ? Power2.easeOut : Power2.easeIn;
+    const coralDelay = expand ? 0.5 : 0;
+
+    sceneTl.add(gsap.to('div.wave-wrapper', {top: waveTop, duration: 1.5, ease: Power3.easeInOut}), position);
+    sceneTl.add(gsap.to('div.bottom-coral-wrapper', {
+        y: coralY,
+        duration: 0.75,
+        delay: coralDelay,
+        ease: coralEase
+    }), '-=1.5');
 }
 
 function showInfoBar() {
