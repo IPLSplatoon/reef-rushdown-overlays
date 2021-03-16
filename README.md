@@ -21,9 +21,9 @@ nodecg setup
 - Install the dashboard: `nodecg install inkfarer/ipl-overlay-controls`
 
     - The overlays work with v2.x.x of `ipl-overlay-controls`. Specify a version by adding the version number with a
-      \# symbol: `nodecg install ipl-overlay-controls#2.0.3`
+      \# symbol: `nodecg install inkfarer/ipl-overlay-controls#2.0.3`
 
-- Install the overlays: `nodecg install inkfarer/reef-rushdown-overlays`
+- Install the overlays: `nodecg install iplsplatoon/reef-rushdown-overlays`
 
 - (Optional) Create the configuration file in `[nodecg root]/cfg/ipl-overlay-controls.json` with the following contents:
 
