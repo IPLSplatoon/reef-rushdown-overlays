@@ -113,7 +113,7 @@ function updateScoreboardName(team, newName) {
 		.add(gsap.to(teamNameElem, {opacity: 1, duration: 0.35}));
 }
 
-function updateStages(roundObject) {
+async function updateStages(roundObject) {
 	let stagesWidth = 0;
 	let stagesGap = 0;
 	let stageModeMaxWidth = 0;
@@ -143,6 +143,8 @@ function updateStages(roundObject) {
 	}
 
 	let roundsHTML = '';
+	const stageImageUrls = [];
+
 	for (let i = 0; i < roundObject.games.length; i++) {
 		const game = roundObject.games[i];
 
@@ -155,6 +157,8 @@ function updateStages(roundObject) {
 		} else if (winnerValue === 2) {
 			winnerName = scoreboardData.value.teamBInfo.name;
 		}
+
+		stageImageUrls.push(`imgs/stages/${mapNameToImagePath[game.stage]}`);
 
 		// noinspection CssUnknownTarget,CssInvalidPropertyValue
 		roundsHTML += `
@@ -183,6 +187,13 @@ function updateStages(roundObject) {
 				</div>
 			</div>`
 	}
+
+	const imageLoads = [];
+	stageImageUrls.forEach(url => {
+		imageLoads.push(loadImagePromise(url));
+	});
+
+	await Promise.all(imageLoads);
 
 	if (activeBreakScene.value === 'stages') {
 		hideStageElems(stagesTl, () => {
