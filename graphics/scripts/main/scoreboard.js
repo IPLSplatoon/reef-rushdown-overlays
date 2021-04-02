@@ -11,16 +11,16 @@ const sbEditTls = {
 
 scoreboardData.on('change', (newValue, oldValue) => {
     if (!oldValue) {
-        textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'), sbEditTls["teamA"]);
-        textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'), sbEditTls["teamB"]);
+        textOpacitySwap(addDots(newValue.teamAInfo.name), document.getElementById('team-a-name'), sbEditTls["teamA"]);
+        textOpacitySwap(addDots(newValue.teamBInfo.name), document.getElementById('team-b-name'), sbEditTls["teamB"]);
         textOpacitySwap(newValue.flavorText, document.getElementById('scoreboard-flavor-text'), sbEditTls["flavorText"]);
     } else {
         if (newValue.teamAInfo.name !== oldValue.teamAInfo.name) {
-            textOpacitySwap(newValue.teamAInfo.name, document.getElementById('team-a-name'), sbEditTls["teamA"]);
+            textOpacitySwap(addDots(newValue.teamAInfo.name), document.getElementById('team-a-name'), sbEditTls["teamA"]);
         }
 
         if (newValue.teamBInfo.name !== oldValue.teamBInfo.name) {
-            textOpacitySwap(newValue.teamBInfo.name, document.getElementById('team-b-name'), sbEditTls["teamB"]);
+            textOpacitySwap(addDots(newValue.teamBInfo.name), document.getElementById('team-b-name'), sbEditTls["teamB"]);
         }
 
         if (newValue.flavorText !== oldValue.flavorText) {

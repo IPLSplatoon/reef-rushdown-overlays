@@ -75,23 +75,23 @@ NodeCG.waitForReplicants(rounds, activeRound, gameWinners, scoreboardData, activ
 
 			if (elem === 1) {
 				if (oldValue && oldValue.teamAInfo.name === newValue.teamAInfo.name) continue;
-				setWinnerName(i, newValue.teamAInfo.name, elem);
+				setWinnerName(i, addDots(newValue.teamAInfo.name), elem);
 			} else if (elem === 2) {
 				if (oldValue && oldValue.teamBInfo.name === newValue.teamBInfo.name) continue;
-				setWinnerName(i, newValue.teamBInfo.name, elem);
+				setWinnerName(i, addDots(newValue.teamBInfo.name), elem);
 			}
 		}
 
 		if (!oldValue) {
-			updateScoreboardName('a', newValue.teamAInfo.name);
-			updateScoreboardName('b', newValue.teamBInfo.name);
+			updateScoreboardName('a', addDots(newValue.teamAInfo.name));
+			updateScoreboardName('b', addDots(newValue.teamBInfo.name));
 		} else {
 			if (oldValue.teamAInfo.name !== newValue.teamAInfo.name) {
-				updateScoreboardName('a', newValue.teamAInfo.name);
+				updateScoreboardName('a', addDots(newValue.teamAInfo.name));
 			}
 
 			if (oldValue.teamBInfo.name !== newValue.teamBInfo.name) {
-				updateScoreboardName('b', newValue.teamBInfo.name);
+				updateScoreboardName('b', addDots(newValue.teamBInfo.name));
 			}
 		}
 	});
@@ -246,7 +246,7 @@ function setGameWinner(index, winner, oldWinner) {
 			winnerTextElem.innerText = winnerName;
 			iconElem.src = winnerIconLink;
 		} else {
-			setWinnerName(index, winnerName, winner);
+			setWinnerName(index, addDots(winnerName), winner);
 		}
 	}
 
