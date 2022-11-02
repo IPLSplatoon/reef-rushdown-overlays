@@ -3,20 +3,30 @@ const teamsTls = {
 	'b': gsap.timeline()
 }
 
-nextTeams.on('change', (newValue, oldValue) => {
-	if (!oldValue) {
-		setTeams(newValue.teamAInfo, 'a');
-		setTeams(newValue.teamBInfo, 'b');
-		return;
-	}
+NodeCG.waitForReplicants(activeRound).then(() => {
+	activeRound.on('change', (newValue, oldValue) => {
+		if (!oldValue) {
+			setTeams(newValue.teamA, 'a');
+			setTeams(newValue.teamB, 'b');
+			return;
+		}
 
-	if (newValue.teamAInfo.id !== oldValue.teamAInfo.id) {
-		setTeams(newValue.teamAInfo, 'a');
-	}
+		if (newValue.teamA.id !== oldValue.teamA.id) {
+			setTeams(newValue.teamA, 'a');
+		} else {
+			doOnDifference(newValue, oldValue, 'teamA.showLogo', showLogo => {
+				gsap.to('#team-a-image', {opacity: showLogo ? 0.2 : 0, duration: 0.35});
+			});
+		}
 
-	if (newValue.teamBInfo.id !== oldValue.teamBInfo.id) {
-		setTeams(newValue.teamBInfo, 'b');
-	}
+		if (newValue.teamB.id !== oldValue.teamB.id) {
+			setTeams(newValue.teamB, 'b');
+		} else {
+			doOnDifference(newValue, oldValue, 'teamB.showLogo', showLogo => {
+				gsap.to('#team-b-image', {opacity: showLogo ? 0.2 : 0, duration: 0.35});
+			});
+		}
+	});
 });
 
 function setTeams(data, team) {
@@ -25,7 +35,7 @@ function setTeams(data, team) {
 	const teamNameElem = document.getElementById(`team-${team}-name`);
 	tl.add(gsap.to(teamNameElem, {
 		opacity: 0, duration: 0.3, onComplete: function () {
-			teamNameElem.setAttribute('text', addDots(data.name));
+			teamNameElem.text = addDots(data.name);
 		}
 	}));
 	tl.add(gsap.to(teamNameElem, {opacity: 1, duration: 0.3}));
@@ -39,7 +49,7 @@ function setTeams(data, team) {
 			} else {
 				loadImage(data.logoUrl, () => {
 					teamImageElem.style.backgroundImage = `url("${data.logoUrl}")`;
-					if ((team === 'a' && teamImageShown.value.teamA === true) || (team === 'b' && teamImageShown.value.teamB === true)) {
+					if (data.showLogo) {
 						tl.add(gsap.to(teamImageElem, {opacity: 0.2, duration: 0.3}));
 					}
 				});
@@ -56,8 +66,8 @@ function setTeams(data, team) {
 
 				const playerNameElem = document.createElement('fitted-text');
 				playerNameElem.classList.add('team-player');
-				playerNameElem.setAttribute('text', addDots(player.name));
-				playerNameElem.setAttribute('max-width', '445');
+				playerNameElem.text = addDots(player.name);
+				playerNameElem.maxWidth = 445;
 
 				teamPlayersElem.appendChild(playerNameElem);
 			}
@@ -74,8 +84,3 @@ function loadImage(imageUrl, callback) {
 		callback();
 	});
 }
-
-teamImageShown.on('change', newValue => {
-	gsap.to('#team-a-image', {opacity: newValue.teamA ? 0.2 : 0, duration: 0.35});
-	gsap.to('#team-b-image', {opacity: newValue.teamB ? 0.2 : 0, duration: 0.35});
-});

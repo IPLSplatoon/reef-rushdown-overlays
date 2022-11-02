@@ -5,15 +5,15 @@ const sbEditTls = {
 };
 
 activeRound.on('change', (newValue, oldValue) => {
-    document.getElementById('team-a-score').setAttribute('text', newValue.teamA.score);
-    document.getElementById('team-b-score').setAttribute('text', newValue.teamB.score);
+    document.getElementById('team-a-score').text = newValue.teamA.score;
+    document.getElementById('team-b-score').text = newValue.teamB.score;
 
     doOnDifference(newValue, oldValue, 'teamA.name', name => {
-        textOpacitySwap(addDots(name), document.getElementById('team-a-name'), sbEditTls['teamA']);
+        sbEditTls['teamA'].add(textOpacitySwap(addDots(name), document.getElementById('team-a-name')));
     });
 
     doOnDifference(newValue, oldValue, 'teamB.name', name => {
-        textOpacitySwap(addDots(name), document.getElementById('team-b-name'), sbEditTls['teamB']);
+        sbEditTls['teamB'].add(textOpacitySwap(addDots(name), document.getElementById('team-b-name')));
     });
 
     gsap.to('#team-a-color', {
@@ -31,7 +31,7 @@ const sbShowTl = new gsap.timeline();
 
 scoreboardData.on('change', (newValue, oldValue) => {
     doOnDifference(newValue, oldValue, 'flavorText', flavorText => {
-        textOpacitySwap(flavorText, document.getElementById('scoreboard-flavor-text'), sbEditTls['flavorText']);
+        sbEditTls['flavorText'].add(textOpacitySwap(flavorText, document.getElementById('scoreboard-flavor-text')));
     });
 
     doOnDifference(newValue, oldValue, 'isVisible', isVisible => {

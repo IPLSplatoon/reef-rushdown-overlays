@@ -1,45 +1,56 @@
-const nextRoundTimeElem = document.getElementById('timer-text');
 let nextStageDate;
-let lastDiff;
+let lastNextStageDiff;
+let nextStageDiffInterval;
 
-nextRoundTime.on('change', newValue => {
-    const time = luxon.DateTime.fromObject(newValue);
-    nextStageDate = time;
-});
-
-setInterval(() => {
-    const diff = Math.ceil(nextStageDate.diffNow(['minutes']).toObject().minutes);
-    if (lastDiff !== diff) {
-        lastDiff = diff;
-        let newText;
-
-        if (diff < 1) {
-            newText = 'Next round starts soon!';
-        } else if (diff === 1) {
-            newText = `Next round starts in <span id="mins-remaining">~${diff} minute...</span>`;
-        } else {
-            newText = `Next round starts in <span id="mins-remaining">~${diff} minutes...</span>`;
+function setNextStageTimer(time, diffChangeCallback) {
+    function checkDiff() {
+        const diff = Math.ceil(nextStageDate.diffNow(['minutes']).toObject().minutes);
+        if (lastNextStageDiff !== diff) {
+            lastNextStageDiff = diff;
+            diffChangeCallback(diff);
         }
-
-        nextRoundTimeElem.innerHTML = newText;
     }
-}, 1000);
 
-nextRoundStartTimeShown.on('change', newValue => {
-    const elemHeight = newValue ? 70 : 0;
-    const elemOpacity = newValue ? 1 : 0;
-    gsap.to('.music-timer-wrapper > .timer', {
-        duration: 0.5,
-        height: elemHeight,
-        opacity: elemOpacity,
-        ease: Power2.easeInOut
+    const newDate = luxon.DateTime.fromISO(time);
+
+    if (newDate.toMillis() !== nextStageDate?.toMillis()) {
+        nextStageDate = newDate;
+        clearInterval(nextStageDiffInterval);
+
+        checkDiff();
+        nextStageDiffInterval = window.setInterval(checkDiff, 1000);
+    }
+}
+
+const nextRoundTimeElem = document.getElementById('timer-text');
+
+nextRoundTime.on('change', (newValue, oldValue) => {
+    setNextStageTimer(newValue.startTime, diff => {
+        if (diff < 1) {
+            nextRoundTimeElem.innerHTML = 'Next round starts soon!';
+        } else if (diff === 1) {
+            nextRoundTimeElem.innerHTML = `Next round starts in <span id="mins-remaining">~${diff} minute...</span>`;
+        } else {
+            nextRoundTimeElem.innerHTML = `Next round starts in <span id="mins-remaining">~${diff} minutes...</span>`;
+        }
     });
 
-    if (!newValue) {
-        animMainLine(false);
-    }
+    doOnDifference(newValue, oldValue, 'isVisible', (isVisible) => {
+        const elemHeight = isVisible ? 70 : 0;
+        const elemOpacity = isVisible ? 1 : 0;
+        gsap.to('.music-timer-wrapper > .timer', {
+            duration: 0.5,
+            height: elemHeight,
+            opacity: elemOpacity,
+            ease: Power2.easeInOut
+        });
 
-    if (musicShown.value && newValue) {
-        animMainLine(true);
-    }
+        if (!isVisible) {
+            animMainLine(false);
+        }
+
+        if (musicShown.value && isVisible) {
+            animMainLine(true);
+        }
+    });
 });

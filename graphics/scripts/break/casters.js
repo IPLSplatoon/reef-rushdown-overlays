@@ -45,7 +45,7 @@ casters.on('change', (newValue, oldValue) => {
 			opacity: 0,
 			duration: 0.3,
 			onComplete: () => {
-				topBarCasterElem.setAttribute('text', castersText);
+				topBarCasterElem.text = castersText;
 			}
 		}));
 
@@ -60,7 +60,7 @@ casters.on('change', (newValue, oldValue) => {
 			opacity: 0,
 			duration: 0.3,
 			onComplete: () => {
-				topBarTwitterElem.setAttribute('text', twittersText);
+				topBarTwitterElem.text = twittersText;
 			}
 		}));
 

@@ -4,7 +4,6 @@
 }
 
 .scene-wrapper.stages-scene > .stages-grid {
-	width: 1700px;
 	height: 600px;
 
 	position: absolute;
@@ -12,9 +11,25 @@
 
 	display: grid;
 	grid-template-rows: 1fr;
-	grid-template-columns: repeat(7, 1fr);
-	gap: 35px;
 	z-index: 6;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-3 {
+	width: 1200px;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 50px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-5 {
+	width: 1500px;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 35px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-7 {
+	width: 1700px;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 20px;
 }
 
 .scene-wrapper.stages-scene > .stages-grid > .stage {
@@ -64,6 +79,7 @@
 	position: relative;
 	font-weight: 600;
 	margin: 10px;
+	overflow-wrap: anywhere;
 }
 
 .scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-winner-wrapper {
@@ -90,14 +106,39 @@
 }
 
 .scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info > .stage-mode {
-	font-size: 32px;
 	margin-bottom: 5px;
 }
 
-.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
+.scene-wrapper.stages-scene > .stages-grid.stage-count-3 > .stage > .stage-content > .stage-text > .stage-info > .stage-mode,
+.scene-wrapper.stages-scene > .stages-grid.stage-count-3 > .stage > .stage-content > .stage-text > .stage-winner-wrapper > .stage-winner {
+	font-size: 37px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-5 > .stage > .stage-content > .stage-text > .stage-info > .stage-mode,
+.scene-wrapper.stages-scene > .stages-grid.stage-count-5 > .stage > .stage-content > .stage-text > .stage-winner-wrapper > .stage-winner {
 	font-size: 35px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-7 > .stage > .stage-content > .stage-text > .stage-info > .stage-mode,
+.scene-wrapper.stages-scene > .stages-grid.stage-count-7 > .stage > .stage-content > .stage-text > .stage-winner-wrapper > .stage-winner {
+	font-size: 31px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
 	font-weight: 700;
 	justify-self: center;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-3 > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
+	font-size: 40px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-5 > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
+	font-size: 38px;
+}
+
+.scene-wrapper.stages-scene > .stages-grid.stage-count-7 > .stage > .stage-content > .stage-text > .stage-info > .stage-name {
+	font-size: 34px;
 }
 
 .scene-wrapper.stages-scene > .stages-scoreboard {

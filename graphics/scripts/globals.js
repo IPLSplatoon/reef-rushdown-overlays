@@ -1,14 +1,34 @@
 const DASHBOARD_BUNDLE_NAME = 'ipl-overlay-controls';
 
-function textOpacitySwap(newText, elem, tl) {
-    tl.add(gsap.to(elem, {
-        opacity: 0, duration: 0.35, onComplete: () => {
-            elem.setAttribute('text', newText);
-        }
-    }));
+function textOpacitySwap(
+    newText,
+    elem,
+    extraElems = [],
+    callbacks = {}
+) {
+    return [
+        gsap.to([elem, ...extraElems], {
+            opacity: 0, duration: 0.35, onComplete: () => {
+                if (elem.tagName === 'FITTED-TEXT') {
+                    elem.text = newText;
+                } else {
+                    elem.innerText = newText;
+                }
 
-    tl.add(gsap.to(elem, {opacity: 1, duration: 0.35}));
+                if (callbacks.afterHide) {
+                    callbacks.afterHide();
+                }
+            }
+        }),
+        gsap.to([elem, ...extraElems], {
+            opacity: 1,
+            duration: 0.35,
+            delay: 0.35,
+            onComplete: callbacks.afterReveal
+        })
+    ];
 }
+
 
 function doOnDifference(newValue, oldValue, path, callback) {
     const newObject = _.get(newValue, path);
