@@ -1,7 +1,7 @@
 {
     "name": "reef-rushdown-overlays",
     "version": "2.0.0",
-    "compatibleDashboardVersion": "^4.0.0",
+    "compatibleDashboardVersion": "^4.4.0",
     "compatibleGameVersions": ["SPLATOON_2", "SPLATOON_3"],
     "description": "Broadcast overlays for Reef Rushdown, a Splatoon tournament.",
     "author": {
@@ -9,7 +9,7 @@
         "url": "https://iplabs.ink"
     },
     "nodecg": {
-        "compatibleRange": "^1.7.0",
+        "compatibleRange": "^1.7.0 || ^2.0.0",
         "graphics": [
             {
                 "file": "main.html",

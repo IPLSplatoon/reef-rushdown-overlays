@@ -9,3 +9,4 @@ const rounds = nodecg.Replicant('rounds', DASHBOARD_BUNDLE_NAME);
 const gameWinners = nodecg.Replicant('gameWinners', DASHBOARD_BUNDLE_NAME);
 const scoreboardData = nodecg.Replicant('scoreboardData', DASHBOARD_BUNDLE_NAME);
 const nextTeams = nodecg.Replicant('nextTeams', DASHBOARD_BUNDLE_NAME);
+const assetPaths = nodecg.Replicant('assetPaths', DASHBOARD_BUNDLE_NAME);
